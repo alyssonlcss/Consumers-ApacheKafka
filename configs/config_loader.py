@@ -1,8 +1,9 @@
 import json
-
+PATH = "../configs/appsettings.json"
+ 
 class ConfigLoader:
     @staticmethod
-    def load_config(file_path):
-        with open(file_path, 'r') as file:
+    def load_config(PATH):
+        with open(PATH, 'r') as file:
             config = json.load(file)
         return config
