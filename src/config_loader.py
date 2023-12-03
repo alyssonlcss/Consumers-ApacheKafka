@@ -1,5 +1,5 @@
 import json
-PATH = "appsettings.json"
+PATH = "configs/appsettings.json"
  
 class ConfigLoader:
     @staticmethod
