@@ -1,16 +1,18 @@
 from confluent_kafka import Consumer, KafkaException
 
 class KafkaConsumer:
-    def __init__(self, group_id, topics):
+    def __init__(self, group_id, topics, bootstrap_servers, auto_offset_reset):
         self.group_id = group_id
         self.topics = topics
+        self.bootstrap_servers = bootstrap_servers
+        self.auto_offset_reset = auto_offset_reset
         self.consumer = self.create_consumer()
 
     def create_consumer(self):
         config = {
-            'bootstrap.servers': 'your_bootstrap_servers',
+            'bootstrap.servers': self.bootstrap_servers,
             'group.id': self.group_id,
-            'auto.offset.reset': 'earliest'
+            'auto.offset.reset': self.auto_offset_reset
         }
         consumer = Consumer(config)
         consumer.subscribe(self.topics)
